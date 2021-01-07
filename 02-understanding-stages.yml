@@ -7,30 +7,37 @@ pool:
 stages:
 - stage: Build
   jobs: 
-  - job: FirstJob #no spaces while giving name
+  - job: FirstJob     #no spaces while giving name
     steps:
     - bash: echo build first job
-  - job: SecondJob #no spaces while giving name
+    - bash: echo $(PipelineLevelVariable)
+  - job: SecondJob    #no spaces while giving name
     steps:
     - bash: echo build second job
 - stage: DevDeploy
+  variables:
+    environment: Dev 
   dependsOn: Build
   jobs: 
-  - job: DevDeployJob #no spaces while giving name
+  - job: DevDeployJob     #no spaces while giving name
     steps:
-    - bash: echo dev deploy job
+    - bash: echo $(environment) deploy job
 - stage: QADeploy
+  variables:
+    environment: QA
   dependsOn: 
   - Build
   jobs: 
     - job: QADeployJob #no spaces while giving name
       steps:
-      - bash: echo QA Deploy job
+      - bash: echo $(environment)Deploy job
 - stage: ProdDeploy
+  variables:
+    environment: Prod
   dependsOn:
   - DevDeploy
   - QADeploy
   jobs: 
     - job: ProdDeployJob #no spaces while giving name
       steps:
-      - bash: echo Prod Deploy job
+      - bash: echo $(environment) Deploy job
