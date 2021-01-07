@@ -14,16 +14,23 @@ stages:
     steps:
     - bash: echo build second job
 - stage: DevDeploy
+  dependsOn: Build
   jobs: 
   - job: DevDeployJob #no spaces while giving name
     steps:
     - bash: echo dev deploy job
 - stage: QADeploy
+  dependsOn: 
+  - Build
+  - DevDeploy
   jobs: 
     - job: QADeployJob #no spaces while giving name
       steps:
       - bash: echo QA Deploy job
 - stage: ProdDeploy
+  dependsOn:
+  - DevDeploy
+  - QADeploy
   jobs: 
     - job: ProdDeployJob #no spaces while giving name
       steps:
