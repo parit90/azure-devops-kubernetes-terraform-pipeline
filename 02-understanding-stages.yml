@@ -1,0 +1,30 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+- stage: Build
+  jobs: 
+  - job: FirstJob #no spaces while giving name
+    steps:
+    - bash: echo build first job
+  - job: SecondJob #no spaces while giving name
+    steps:
+    - bash: echo build second job
+- stage: DevDeploy
+  jobs: 
+  - job: DevDeployJob #no spaces while giving name
+    steps:
+    - bash: echo dev deploy job
+- stage: QADeploy
+  jobs: 
+    - job: QADeployJob #no spaces while giving name
+      steps:
+      - bash: echo QA Deploy job
+- stage: ProdDeploy
+  jobs: 
+    - job: ProdDeployJob #no spaces while giving name
+      steps:
+      - bash: echo Prod Deploy job
