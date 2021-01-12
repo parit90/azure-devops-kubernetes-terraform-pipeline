@@ -25,8 +25,8 @@ steps:
     backendServiceArm: 'azure-resources-manager-service-connection'
     ensureBackend: true
     backendAzureRmResourceGroupName: 'terraform-backend-rg'
-    backendAzureRmStorageAccountName: 'myterraform'
-    backendAzureRmContainerName: 'mycontainertf'
+    backendAzureRmStorageAccountName: 'paritshstorageacc'
+    backendAzureRmContainerName: 'paritshcontainer'
     backendAzureRmResourceGroupLocation: 'westeurope'
     backendAzureRmKey: 'kubernetes-dev.tfstate'
     allowTelemetryCollection: true
