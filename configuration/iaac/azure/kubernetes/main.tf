@@ -6,6 +6,7 @@ resource "azurerm_resource_group" "resource_group" {
 provider "azurerm" {
   //version = "~>2.0.0"
   features {}
+  skip_provider_registration = true
 }
 
 resource "azurerm_kubernetes_cluster" "terraform-k8s" {
